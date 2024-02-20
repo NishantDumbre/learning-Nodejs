@@ -6,7 +6,7 @@ const server = http.createServer((req, res) => {
     const method = req.method
     let message = ''
 
-    if (url === '/' && method === 'POST') {
+    if (url === '/') {
         const body = []
         req.on('data', (data) => {
             body.push(data)

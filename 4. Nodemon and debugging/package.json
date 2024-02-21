@@ -1,0 +1,15 @@
+{
+  "name": "updated-cleaner-code-for-task",
+  "version": "1.0.0",
+  "description": "practice",
+  "main": "Updated-task.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon Updated-task.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}

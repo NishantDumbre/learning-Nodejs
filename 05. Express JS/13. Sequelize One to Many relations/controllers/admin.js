@@ -13,14 +13,13 @@ exports.postAddProduct = (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  req.user.createProduct({
-    title: title,
-    price: price,
-    imageUrl: imageUrl,
-    description: description,
-    userId: req.user.dataValues.id
-  })
-    // We set in app.js the relation that 1 user has many products, or product belongs to user. We also created another object in the request called req.user which has the dataValues and the methods from sequelize. Since Product belongs to User, we can run the function        req.user.createProduct() which will create the product for that particular user
+  req.user
+    .createProduct({
+      title: title,
+      price: price,
+      imageUrl: imageUrl,
+      description: description
+    })
     .then(result => {
       // console.log(result);
       console.log('Created Product');
@@ -39,8 +38,10 @@ exports.getEditProduct = (req, res, next) => {
   const prodId = req.params.productId;
   req.user
     .getProducts({ where: { id: prodId } })
-    .then(product => {
-      product = product[0]
+    // We set in app.js the relation that 1 user has many products, or product belongs to user. We also created another object in the request called req.user which has the dataValues and the methods from sequelize. Since Product belongs to User, we can run the function        req.user.createProduct() which will create the product for that particular user
+    // Product.findByPk(prodId)
+    .then(products => {
+      const product = products[0];
       if (!product) {
         return res.redirect('/');
       }
@@ -76,7 +77,8 @@ exports.postEditProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-  req.user.getProducts()
+  req.user
+    .getProducts()
     .then(products => {
       res.render('admin/products', {
         prods: products,

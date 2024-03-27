@@ -1,14 +1,16 @@
 const sequelize = require('../utils/database')
 const Sequelize = require('sequelize')
 
-const Comments = sequelize.define('comments',{
+const Company = sequelize.define('company',{
     id:{
         type:Sequelize.INTEGER,
         autoIncrement:true,
         primaryKey:true,
         allowNull:false
     },
-    comment:Sequelize.STRING
+    company: Sequelize.STRING,
+    pros:Sequelize.STRING,
+    cons:Sequelize.STRING
 })
 
-module.exports = Comments
+module.exports = Company

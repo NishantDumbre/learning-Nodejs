@@ -4,8 +4,8 @@ const cors = require('cors')
 
 const sequelize = require('./backend/utils/database')
 const routes = require('./backend/routes/routes')
-const Blogs = require('./backend/models/blogModels')
-const Comments = require('./backend/models/commentModels')
+const Blogs = require('./backend/models/companyModels')
+const Comments = require('./backend/models/reviewModels')
 const app = express()
 
 
